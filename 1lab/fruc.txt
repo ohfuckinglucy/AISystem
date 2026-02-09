@@ -1,0 +1,5 @@
+1 - diameter    Диаметр (см)    1.6 - 19.6
+2 - mass Масса  (граммы)        3.1 - 212.6
+3 - sweetness   Сладость        4.0 - 10.4
+4 - firmness    Твёрдость       1.0 - 9.4
+5 - class       Тип фрукта      apple banana grape
