@@ -19,8 +19,7 @@ data = pd.read_csv(data_src, delimiter=',', header=None, skiprows=1,
                    dtype={0: str, 1: str, 2: int, 3: float}, 
                    names=['Name', 'Gender', 'Count', 'Probability'])
 
-data = data[:1000].copy()
-
+# data = data[:10000].copy()
 
 le = LabelEncoder()
 data['GenderEncoded'] = le.fit_transform(data['Gender'])
@@ -32,7 +31,7 @@ data['VowelRatio'] = data['VowelCount'] / data['NameLength']
 data['LogCount'] = np.log1p(data['Count'])
 data['LastLetterPos'] = data['Name'].str.lower().apply(lambda x: ord(x[-1]) - ord('a') + 1)
 
-sb.pairplot(data, hue='GenderEncoded', palette='husl')
+# sb.pairplot(data, hue='GenderEncoded', palette='husl')
 
 X = data[[
     'NameLength', 
@@ -47,7 +46,7 @@ Y = data['GenderEncoded'].values
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-knn = KNeighborsClassifier(n_neighbors=17)
+knn = KNeighborsClassifier(n_neighbors=49)
 knn.fit(X_train, Y_train)
 
 predictions = knn.predict(X_test)
